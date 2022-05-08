@@ -76,6 +76,12 @@ func (t Localizer) Get(key string, replacements ...*Replacements) string {
 	return str
 }
 
+func GetWithLocale(locale, key string, replacements ...*Replacements) string {
+	t := New(locale, locale)
+	str := t.GetWithLocale(t.Locale, key, replacements...)
+	return str
+}
+
 func (t Localizer) getLocalizationKey(locale string, key string) string {
 	return fmt.Sprintf("%v.%v", locale, key)
 }
