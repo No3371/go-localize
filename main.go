@@ -59,7 +59,7 @@ func run(in, out *string) error {
 		return err
 	}
 
-	localizations, err := generateLocalizations(files)
+	localizations, err := generateLocalizations(files, outputDir)
 	if err != nil {
 		return err
 	}
@@ -67,7 +67,7 @@ func run(in, out *string) error {
 	return generateFile(outputDir, localizations)
 }
 
-func generateLocalizations(files []string) (map[string]string, error) {
+func generateLocalizations(files []string, out string) (map[string]string, error) {
 	localizations := map[string]string{}
 	for _, file := range files {
 		newLocalizations, err := getLocalizationsFromFile(file)
@@ -75,9 +75,10 @@ func generateLocalizations(files []string) (map[string]string, error) {
 			return nil, err
 		}
 		for key, value := range newLocalizations {
-			localizations[key] = value
+			localizations[strings.TrimLeft(key, out)] = value
 		}
 	}
+
 	return localizations, nil
 }
 

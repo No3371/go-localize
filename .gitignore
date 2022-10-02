@@ -4,3 +4,5 @@ profile.out
 coverage.out
 test_files
 .idea
+.vscode
+go-localize
