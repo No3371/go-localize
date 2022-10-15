@@ -200,7 +200,7 @@ func getSlicePath(file string) []string {
 
 	fileName := strings.TrimSuffix(file, filepath.Ext(file))
 	if fileName == "_" {
-		return []string {pathSlice[0], fileName}
+		return []string {pathSlice[1]}
 	}
 
 	var strs []string
