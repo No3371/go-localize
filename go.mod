@@ -1,4 +1,4 @@
-module github.com/tucocsa/go-localize
+module github.com/No3371/go-localize
 
 go 1.13
 
