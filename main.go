@@ -198,6 +198,11 @@ func getSlicePath(file string) []string {
 	paths := strings.Replace(dir, *input, "", -1)
 	pathSlice := strings.Split(paths, string(filepath.Separator))
 
+	fileName := strings.TrimSuffix(file, filepath.Ext(file))
+	if fileName == "_" {
+		return []string {pathSlice[0], fileName}
+	}
+
 	var strs []string
 	for _, part := range pathSlice {
 		part := strings.TrimSpace(part)
