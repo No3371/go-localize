@@ -19,7 +19,7 @@ import (
 
 var localizations = map[string]string{
 {{- range $key, $element := .Localizations  }}
-	"{{ $key }}":{{ call $.LineUp $key }} `{{ $element }}`,
+	"{{ $key }}":{{ call $.LineUp $key }} ` + "`{{ $element }}`" + `
 {{- end }}
 }
 
