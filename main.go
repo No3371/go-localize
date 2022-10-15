@@ -169,7 +169,7 @@ func getLocalizationsFromFile(file string) (map[string]string, error) {
 
 	slicePath := getSlicePath(file)
 	for key, value := range localizationFile {
-		newLocalizations[strings.Join(append(slicePath, key), ".")] = value
+		newLocalizations[strings.Join(append(slicePath, key), ".")] = strings.ReplaceAll(value, "`", "`+ \"`\" + `")
 	}
 
 	return newLocalizations, nil
