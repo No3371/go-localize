@@ -46,6 +46,8 @@ func main() {
 	if err := run(input, output); err != nil {
 		log.Fatal(err.Error())
 	}
+
+	log.Print("Success!")
 }
 
 func run(in, out *string) error {
@@ -53,6 +55,18 @@ func run(in, out *string) error {
 	if err != nil {
 		return err
 	}
+
+	inputDir, err = filepath.Abs(inputDir)
+	if err != nil {
+		return err
+	}
+	
+	outputDir, err = filepath.Abs(outputDir)
+	if err != nil {
+		return err
+	}
+
+	log.Printf("Generating localizations...\nFrom %s\n To %s", inputDir, outputDir)
 
 	files, err := getLocalizationFiles(inputDir)
 	if err != nil {
